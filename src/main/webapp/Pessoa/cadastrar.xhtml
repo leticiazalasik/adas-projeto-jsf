@@ -10,9 +10,21 @@
 </h:head>
 <h:body>
 
-<h2>Hello World!!!</h2>
+<h2>cadastro de Pessoa</h2>
+<h:form> 
 
-<h:outputLabel value="Teste de label JSF"/>
+<h:panelGrid columns="2"> 
+<h:outputText value="Nome"/> 
+
+<h:inputText value="#{pessoaBean.pessoa.nome}"/>
+
+<h:outputText value="Profissão"/>
+<h:inputText value="#{pessoaBean.pessoa.profissao}"/>
+
+<h:outputText/>
+<h:commandButton value="Adicionar" action="#{pessoaBean.adicionar}"/> 
+</h:panelGrid> 
+</h:form>
 
 </h:body>
 </html>

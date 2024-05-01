@@ -27,6 +27,7 @@ import br.com.AdasJsf.model.Pessoa;
 		public String adicionar() {
 			pessoas.add(pessoa); 
 			pessoa=new Pessoa();
+			System.out.println("Tamanho da lista: " + this.pessoas.size());
 			return null; 
 		}
 
