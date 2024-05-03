@@ -59,11 +59,15 @@ public class PessoaBean implements Serializable {
 	}
 	
 	public void carregarEdicao(ActionEvent event) {
-		Pessoa dadosPessoa = (Pessoa)event.getComponent().getAttributes().get(pessoa); 
+		Pessoa dadosPessoa = (Pessoa)event.getComponent().getAttributes().get("pessoa"); 
 		
 		pessoa.setId(dadosPessoa.getId());
 		pessoa.setNome(dadosPessoa.getNome());
 		pessoa.setProfissao(dadosPessoa.getProfissao());
+		pessoa.setIdade(dadosPessoa.getIdade());
+		pessoa.setCidade(dadosPessoa.getCidade());
+
+
 	}
 
 	// Getters e Setters
