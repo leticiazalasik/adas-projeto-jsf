@@ -40,18 +40,20 @@
 			#{pessoa.cidade}
 		</h:column>
 		
-		<h:column> 
-		<h:commandButton value="Editar" action="{pessoaBean.telaEdicao}" actionListener="#{pessoaBean.carregarEdicao">
-		<f:attribute name= "pessoa" value="#{pessoa}"> </f:attribute>
+		<h:column>
+		<h:commandButton action="#{pessoaBean.telaEdicao()}" actionListener="#{pessoaBean.carregarEdicao} value= "Editar">
+		<f:attribute name="pessoa" value= "#{pessoa}"/>
 		</h:commandButton>
 		</h:column>
 		
 		<h:column> 
-		 <h:commandButton value="Apagar"/>
+		 <h:commandButton value="Apagar" action="#{pessoaBean.apagar(pessoa)}"/>
 		</h:column>
 	
 	</h:dataTable>
  </h:form>
+ 
+ <h:button style="margin-top: 20px" value="Menu" outcome="/menu.xhtml"/>
  
 </h:body>
 </html>
