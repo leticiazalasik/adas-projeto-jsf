@@ -10,6 +10,8 @@ public class Pessoa implements Serializable{
 	private int id; 
 	private String nome; 
 	private String profissao;
+	private int idade; 
+	private String cidade; 
 	
 	
 	public Pessoa() {
@@ -35,6 +37,20 @@ public class Pessoa implements Serializable{
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	
+	public int getIdade() {
+		return idade;
+	}
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 	@Override
 	public int hashCode() {

@@ -30,6 +30,16 @@
 			#{pessoa.profissao}
 		</h:column>
 		
+		<h:column>
+			<f:facet name="header">Idade</f:facet>
+			#{pessoa.idade}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Cidade</f:facet>
+			#{pessoa.cidade}
+		</h:column>
+		
 		<h:column> 
 		<h:commandButton value="Editar" action="{pessoaBean.telaEdicao}" actionListener="#{pessoaBean.carregarEdicao">
 		<f:attribute name= "pessoa" value="#{pessoa}"> </f:attribute>
