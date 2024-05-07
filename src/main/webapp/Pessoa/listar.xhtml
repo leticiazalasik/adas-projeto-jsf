@@ -11,50 +11,36 @@
 <h:body>
 
 	<h2>Lista de pessoas</h2>
-	
 	<h:form>
-	<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa">
+		<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa">
+		
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+				#{pessoa.id}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				#{pessoa.nome}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Profissão</f:facet>
+				#{pessoa.profissao}
+			</h:column>
+			
+			<h:column>
+				<h:commandButton value="Editar" action="#{pessoaBean.telaEdicao}" actionListener="#{pessoaBean.carregarEdicao}" >
+					<f:attribute name="pessoa" value="#{pessoa}"/>
+				</h:commandButton>
+			</h:column>
 	
-		<h:column>
-			<f:facet name="header">Id</f:facet>
-			#{pessoa.id}
-		</h:column>
+			<h:column>
+				<h:commandButton value="Apagar"/>
+			</h:column>
 		
-		<h:column>
-			<f:facet name="header">Nome</f:facet>
-			#{pessoa.nome}
-		</h:column>
-		
-		<h:column>
-			<f:facet name="header">Profissão</f:facet>
-			#{pessoa.profissao}
-		</h:column>
-		
-		<h:column>
-			<f:facet name="header">Idade</f:facet>
-			#{pessoa.idade}
-		</h:column>
-		
-		<h:column>
-			<f:facet name="header">Cidade</f:facet>
-			#{pessoa.cidade}
-		</h:column>
-		
-		<h:column>
-		<h:commandButton action="#{pessoaBean.telaEdicao()}" actionListener="#{pessoaBean.carregarEdicao} value= "Editar">
-		<f:attribute name="pessoa" value= "#{pessoa}"/>
-		</h:commandButton>
-		</h:column>
-		
-		<h:column> 
-		 <h:commandButton value="Apagar" action="#{pessoaBean.apagar(pessoa)}"/>
-		</h:column>
-	
-	</h:dataTable>
- </h:form>
- 
- <h:button style="margin-top: 20px" value="Menu" outcome="/menu.xhtml"/>
- 
+		</h:dataTable>
+	</h:form>
+
 </h:body>
 </html>
-

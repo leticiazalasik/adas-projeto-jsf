@@ -1,4 +1,4 @@
-package br.com.AdasJsf.controller;
+package br.com.adasJSF.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.com.AdasJsf.model.Pessoa;
+import br.com.adasJSF.model.Pessoa;
 
 @Named("pessoaBean")
 @SessionScoped
@@ -32,42 +32,40 @@ public class PessoaBean implements Serializable {
 		pessoa.setId(this.getSequenciaId());
 		pessoas.add(pessoa);
 		pessoa = new Pessoa();
-		return null;
+		return "/pessoa/listar.xhtml";
+	}
+	
+	public String editar() {
+		int index = pessoas.indexOf(pessoa);
+		Pessoa pessoaEdicao = pessoa;
+		
+		pessoas.remove(pessoa);
+		pessoas.add(index, pessoaEdicao);
+		
+		// Alternativa de uso para edição da lista
+		//pessoas.set(index, pessoaEdicao);
+		
+		pessoa = new Pessoa();
+		
+		return "/pessoa/listar.xhtml";
+	}
+	
+	public String telaEdicao() {
+		return "/pessoa/editar.xhtml";
+	}
+	
+	public void carregarEdicao(ActionEvent event) {
+		Pessoa dadosPessoa = (Pessoa)event.getComponent().getAttributes().get("pessoa");
+		
+		pessoa.setId(dadosPessoa.getId());
+		pessoa.setNome(dadosPessoa.getNome());
+		pessoa.setProfissao(dadosPessoa.getProfissao());
 	}
 
 	private int getSequenciaId() {
 		//this.idSequencia = this.idSequencia + 1;
 		//this.idSequencia++;
 		return this.idSequencia++;
-	}
-
-	public String editar() {
-		int index = pessoas.indexOf(pessoa); 
-		Pessoa pessoaEdicao = pessoa; 
-		
-		pessoas.remove(pessoa); 
-		pessoas.add(index, pessoaEdicao);
-		
-		pessoa = new Pessoa();
-		
-		return "/pessoa/listar.xhtml"; 
-
-	}
-	
-	public String telaEdicao() { 
-		return "/paginas/editarPessoa.xhtml"; 
-	}
-	
-	public void carregarEdicao(ActionEvent event) {
-		Pessoa dadosPessoa = (Pessoa)event.getComponent().getAttributes().get("pessoa"); 
-		
-		pessoa.setId(dadosPessoa.getId());
-		pessoa.setNome(dadosPessoa.getNome());
-		pessoa.setProfissao(dadosPessoa.getProfissao());
-		pessoa.setIdade(dadosPessoa.getIdade());
-		pessoa.setCidade(dadosPessoa.getCidade());
-
-
 	}
 
 	// Getters e Setters
