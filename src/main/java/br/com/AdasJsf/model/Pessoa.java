@@ -10,6 +10,9 @@ public class Pessoa implements Serializable {
 	private int id;
 	private String nome;
 	private String profissao;
+	private String cidade;
+	private int idade;
+
 	
 	public Pessoa() {
 		
@@ -42,6 +45,23 @@ public class Pessoa implements Serializable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+
+	
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public int getIdade() {
+		return idade;
+	}
+
+	public void setIdade(int idade) {
+		this.idade = idade;
 	}
 
 	@Override

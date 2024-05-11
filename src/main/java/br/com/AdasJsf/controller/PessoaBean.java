@@ -67,6 +67,11 @@ public class PessoaBean implements Serializable {
 		//this.idSequencia++;
 		return this.idSequencia++;
 	}
+	
+	public String excluir (Pessoa pessoaExcluir) { 
+		pessoas.remove(pessoaExcluir); 
+		return null; 
+		}
 
 	// Getters e Setters
 	public Pessoa getPessoa() {
