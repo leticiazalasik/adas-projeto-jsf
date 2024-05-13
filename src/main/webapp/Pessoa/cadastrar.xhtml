@@ -58,10 +58,20 @@
 		<p:panelGrid columns="2">
 			
 			<p:outputLabel value="Nome"/>
-			<p:inputText value="#{pessoaBean.pessoa.nome}"/>
+			<p:inputText value="#{pessoaBean.pessoa.nome}" required="true" />
 			
 			<p:outputLabel value="Profissão"/>
-			<p:inputText value="#{pessoaBean.pessoa.profissao}"/>
+			<p:inputText value="#{pessoaBean.pessoa.profissao}" required="true"/>
+			
+			<p:outputLabel value="Profissão"/>
+			<p:inputText value="#{pessoaBean.pessoa.cidade}" required="true"/>
+			
+			<p:outputLabel value="Cidade"/>
+<p:selectOneMenu value="#{pessoaBean.pessoa.cidade}">
+    <f:selectItem itemLabel="Selecione a Cidade" itemValue="" />
+    <f:selectItems value="#{pessoaBean.todasCidades}" var="cidade" itemValue="#{cidade}" itemLabel="#{cidade}" />
+</p:selectOneMenu>
+			
 		
 			 <p:row>
             <p:column styleClass="ui-grid-col-12">

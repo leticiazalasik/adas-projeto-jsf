@@ -2,6 +2,7 @@ package br.com.adasJSF.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -50,6 +51,11 @@ public class PessoaBean implements Serializable {
 		return "/pessoa/listar.xhtml";
 	}
 	
+	public String excluir(Pessoa pessoaExcluir) {
+		pessoas.remove(pessoaExcluir);
+		return null;
+	}
+	
 	public String telaEdicao() {
 		return "/pessoa/editar.xhtml";
 	}
@@ -61,17 +67,17 @@ public class PessoaBean implements Serializable {
 		pessoa.setNome(dadosPessoa.getNome());
 		pessoa.setProfissao(dadosPessoa.getProfissao());
 	}
+	
+	 public List<String> getTodasCidades() {
+	        return Arrays.asList("Blumenau", "Pomerode", "Indaial", "Gaspar", "Outra");
+	    }
+	
 
 	private int getSequenciaId() {
 		//this.idSequencia = this.idSequencia + 1;
 		//this.idSequencia++;
 		return this.idSequencia++;
 	}
-	
-	public String excluir (Pessoa pessoaExcluir) { 
-		pessoas.remove(pessoaExcluir); 
-		return null; 
-		}
 
 	// Getters e Setters
 	public Pessoa getPessoa() {

@@ -4,24 +4,16 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Projeto Adas JSF</title>
-
 	<link rel="stylesheet" href="../assets/estilo.css"></link>
-
-
 </h:head>
 <h:body>
-
-
 
 	<header>
 	<h2>Sistema Adas JSF</h2>
 	</header>
-
-
 
 	<div class="card">
 		<h:form>
@@ -33,23 +25,20 @@
 						outcome="/pessoa/cadastrar.xhtml" />
 				</p:submenu>
 
-
 				<p:submenu label="Listas" icon="pi pi-fw pi-list">
-					<p:menuitem value="Pessoa" ison="pi pi-fw pi-user"
+					<p:menuitem value="Pessoa" icon="pi pi-fw pi-user"
 						outcome="/pessoa/listar.xhtml" />
 				</p:submenu>
+				
+				<p:divider layout="vertical"/>
 
-				<p:divider layout="vertical" />
-
-				<p:menuitem value="Principal" icon="pi pi-fw pi-home"
-					outcome="/menu.xhtml" />
+            	<p:menuitem value="Principal" icon="pi pi-fw pi-home" outcome="/menu.xhtml"/>
 
 				<f:facet name="options">
 					<div class="ui-input-icon-left mr-2">
 						<i class="pi pi-fw pi-search" />
 						<p:inputText placeholder="Buscar" />
 					</div>
-
 					<p:button value="Sair" icon="pi pi-fw pi-sign-out"
 						styleClass="ui-button-info" />
 				</f:facet>
@@ -59,48 +48,56 @@
 
 	<div class="card">
 		<h5>Lista de pessoas</h5>
-
 		<h:form id="form">
 			<p:dataTable value="#{pessoaBean.pessoas}" var="pessoa" id="listaPessoas">
-
+	
 				<p:column>
-					<f:facet name="header">Id</f:facet>
-				#{pessoa.id}
-			</p:column>
-
+					#{pessoa.id}
+				</p:column>
+	
 				<p:column>
 					<f:facet name="header">Nome</f:facet>
-				#{pessoa.nome}
-			</p:column>
-
+					#{pessoa.nome}
+				</p:column>
+	
 				<p:column>
 					<f:facet name="header">Profissão</f:facet>
-				#{pessoa.profissao}
-			</p:column>
-
+					#{pessoa.profissao}
+				</p:column>
+				
 				<p:column>
-					<p:commandButton icon="pi pi-file-edit"
+					<f:facet name="header">Idade</f:facet>
+					#{pessoa.idade}
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">Cidade</f:facet>
+					#{pessoa.cidade}
+				</p:column>
+	
+				<p:column>
+					<p:commandButton 
+						icon="pi pi-file-edit" 
 						styleClass="rounded-button ui-button-secondary"
-						actionListener="{#pessoaBean.carregarEdicao}"
-						action="#{pessoaBean.telaEdicao}" title="Editar">
+						action="#{pessoaBean.telaEdicao}" 
+						actionListener="#{pessoaBean.carregarEdicao}"
+						title="Editar">
+						<f:attribute name="pessoa" value="#{pessoa}" />
 					</p:commandButton>
 				</p:column>
-
-
+	
 				<p:column>
-					<p:commandButton icon="pi pi-trash"
+					<p:commandButton 
+						icon="pi pi-trash" 
 						styleClass="rounded-button ui-button-danger"
-						title="Excluir"
-						actionListener="#pessoaBean.excluir"
-						update="form listaPessoas">
-					</p:commandButton>
+						action="#{pessoaBean.excluir(pessoa)}" 
+						title="Excluir" 
+						update="form listaPessoas"/>
 				</p:column>
-
-
+	
 			</p:dataTable>
-
-
 		</h:form>
 	</div>
+
 </h:body>
 </html>
